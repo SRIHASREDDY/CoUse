@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Styles -->
+  <style>
+    .block { fill:#f0f0f0; stroke:#000; stroke-width:2; }
+    .blue-block { fill:#d0e0ff; stroke:#000; stroke-width:2; }
+    .green-block { fill:#d0ffe0; stroke:#000; stroke-width:2; }
+    .yellow-block { fill:#ffffd0; stroke:#000; stroke-width:2; }
+    .purple-block { fill:#f0d0ff; stroke:#000; stroke-width:2; }
+    .label { font-family:Arial; font-size:14px; text-anchor:middle; }
+    .title { font-family:Arial; font-size:16px; font-weight:bold; text-anchor:middle; }
+    .subtitle { font-family:Arial; font-size:12px; font-style:italic; text-anchor:middle; }
+    .arrow { stroke:#000; stroke-width:2; fill:none; marker-end:url(#arrowhead); }
+    .dashed-arrow { stroke:#000; stroke-width:2; fill:none; marker-end:url(#arrowhead); stroke-dasharray:5,3; }
+  </style>
+
+  <!-- Arrow Marker Definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="30" class="title">Waste Cleaning System Architecture</text>
+
+  <!-- Frontend/Client Layer -->
+  <rect x="300" y="60" width="200" height="60" rx="5" class="blue-block" />
+  <text x="400" y="85" class="title">Client Applications</text>
+  <text x="400" y="105" class="subtitle">Mobile App / Web Interface</text>
+
+  <!-- Authentication Layer -->
+  <rect x="300" y="150" width="200" height="50" rx="5" class="purple-block" />
+  <text x="400" y="180" class="title">Authentication Layer</text>
+
+  <!-- User Management (Left) -->
+  <rect x="100" y="230" width="140" height="120" rx="5" class="yellow-block" />
+  <text x="170" y="255" class="title">User Management</text>
+  <line x1="100" y1="270" x2="240" y2="270" stroke="#000" stroke-width="1" />
+  <text x="170" y="290" class="label">Admin</text>
+  <text x="170" y="315" class="label">Poster</text>
+  <text x="170" y="340" class="label">Helper</text>
+
+  <!-- Core Services (Center) -->
+  <rect x="300" y="230" width="200" height="160" rx="5" class="blue-block" />
+  <text x="400" y="255" class="title">Core Services</text>
+  <line x1="300" y1="270" x2="500" y2="270" stroke="#000" stroke-width="1" />
+  <text x="400" y="290" class="label">Waste Post Service</text>
+  <text x="400" y="315" class="label">Location Management</text>
+  <text x="400" y="340" class="label">Notification Service</text>
+  <text x="400" y="365" class="label">Ranking Service</text>
+
+  <!-- External Services (Right) -->
+  <rect x="560" y="230" width="140" height="70" rx="5" class="green-block" />
+  <text x="630" y="255" class="title">External APIs</text>
+  <line x1="560" y1="270" x2="700" y2="270" stroke="#000" stroke-width="1" />
+  <text x="630" y="290" class="label">Google Maps API</text>
+
+  <!-- Storage Layer -->
+  <rect x="100" y="420" width="600" height="80" rx="5" class="yellow-block" />
+  <text x="400" y="445" class="title">Storage Layer</text>
+  <line x1="100" y1="460" x2="700" y2="460" stroke="#000" stroke-width="1" />
+  
+  <!-- Storage Components -->
+  <rect x="130" y="470" width="140" height="20" rx="3" class="block" />
+  <text x="200" y="485" class="label">Amazon S3</text>
+  
+  <rect x="330" y="470" width="140" height="20" rx="3" class="block" />
+  <text x="400" y="485" class="label">AWS RDS</text>
+  
+  <rect x="530" y="470" width="140" height="20" rx="3" class="block" />
+  <text x="600" y="485" class="label">ElastiCache</text>
+
+  <!-- Data Flow Arrows -->
+  <!-- Client to Auth -->
+  <path d="M 400 120 L 400 150" class="arrow" />
+  
+  <!-- Auth to Services -->
+  <path d="M 400 200 L 400 230" class="arrow" />
+  
+  <!-- User Management to Core Services -->
+  <path d="M 240 290 L 300 290" class="arrow" />
+  
+  <!-- Core Services to External APIs -->
+  <path d="M 500 290 L 560 290" class="arrow" />
+  
+  <!-- Core Services to Storage -->
+  <path d="M 400 390 L 400 420" class="arrow" />
+  
+  <!-- External APIs to Core Services (feedback) -->
+  <path d="M 630 300 L 630 350 L 500 350" class="dashed-arrow" />
+  
+  <!-- User Flow Explanation -->
+  <text x="400" y="530" class="title">User Flow</text>
+  <text x="400" y="555" class="subtitle">Poster → Upload waste photos → Stored in S3 → Helper receives notifications based on location</text>
+  <text x="400" y="575" class="subtitle">Admin → System oversight and management</text>
+</svg>
